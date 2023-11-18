@@ -18,17 +18,17 @@ const fetchFunc = () => fetch(url).then(r => r.json())
 export const useONEExchangeRate = singletonHook({}, () => {
   const [data, setData] = useState<any>({})
 
-  const options: APIPollingOptions<any> = {
-    fetchFunc,
-    initialState: {},
-    delay: 30000,
-    disableTabListener: true
-  }
-  const res = useAPIPolling(options)
+  // const options: APIPollingOptions<any> = {
+  //   fetchFunc,
+  //   initialState: {},
+  //   delay: 30000,
+  //   disableTabListener: true
+  // }
+  // const res = useAPIPolling(options)
 
-  useEffect(() => {
-    setData(res)
-  }, [res])
+  // useEffect(() => {
+  //   setData(res)
+  // }, [res])
 
   return data
 })

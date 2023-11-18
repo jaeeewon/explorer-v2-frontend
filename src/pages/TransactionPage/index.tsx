@@ -14,7 +14,7 @@ import {
   getByteCodeSignatureByHash,
 } from "src/api/client";
 import { revertErrorMessage } from "src/web3/parseByteCode";
-import { hmyv2_getTransactionReceipt } from "src/api/rpc";
+import { fchv2_getTransactionReceipt } from "src/api/rpc";
 import useQuery from "../../hooks/useQuery";
 import { config } from "../../config";
 
@@ -94,7 +94,7 @@ export const TransactionPage = () => {
       }
 
       if (trx) {
-        const txnReceipt = await hmyv2_getTransactionReceipt([id], shard);
+        const txnReceipt = await fchv2_getTransactionReceipt([id], shard);
         if (txnReceipt && txnReceipt.result) {
           setTxReceipt(txnReceipt.result)
           if(txnReceipt.result.gasUsed) {

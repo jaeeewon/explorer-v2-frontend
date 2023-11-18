@@ -52,9 +52,9 @@ export const ONEValue = (props: ONEValueProps) => {
         size="small"
         margin={{ right: "xxmall" }}
       >
-        {v.toString()} ONE
+        {v.toString()} FEE
       </Text>
-      {USDValue && +price > 0 && !isTodayTransaction && !hideTip && (
+      {/* {USDValue && +price > 0 && !isTodayTransaction && !hideTip && (
         <Tip
           dropProps={{ align: { bottom: "top" }}}
           content={
@@ -81,7 +81,7 @@ export const ONEValue = (props: ONEValueProps) => {
       )}
       {USDValue && +price > 0 && isTodayTransaction && (
         <Text size="small">(${USDValue})</Text>
-      )}
+      )} */}
     </Box>
   );
 };

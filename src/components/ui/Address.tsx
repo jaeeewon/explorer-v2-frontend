@@ -85,7 +85,7 @@ export const Address = (props: IAddress) => {
 
   let outPutAddress: string;
   try {
-    outPutAddress = currency === "ONE" ? getAddress(address).bech32 : toChecksumAddress(address);
+    outPutAddress = currency === "FEE" ? getAddress(address).bech32 : toChecksumAddress(address);
   } catch {
     outPutAddress = address;
   }

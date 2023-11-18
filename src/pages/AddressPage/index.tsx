@@ -19,7 +19,7 @@ import {
   TRelatedTransaction,
 } from "src/api/client.interface";
 import { Inventory } from "./tabs/inventory/Inventory";
-import { getAllBalance, hmy_getDelegationsByDelegator, StakingDelegation } from "src/api/rpc";
+import { getAllBalance, fch_getDelegationsByDelegator, StakingDelegation } from "src/api/rpc";
 import { ISourceCode, loadSourceCode } from "../../api/explorerV1";
 import { AddressDetails, RelatedTransaction, ShardID } from "../../types";
 import { ContractDetails } from "./ContractDetails";
@@ -62,7 +62,7 @@ export function AddressPage() {
   // @ts-ignore
   let { id } = useParams();
   id = `${id}`.toLowerCase();
-  id = id.slice(0, 3) === "one" ? getAddress(id).basicHex : id;
+  id = id.slice(0, 3) === "fee" ? getAddress(id).basicHex : id;
 
   const erc20Token = erc20Map[id] || null;
   const erc1155Token = erc1155Map[id] || null
@@ -140,7 +140,7 @@ export function AddressPage() {
   useEffect(() => {
     const getStakingInfo = async () => {
       try {
-        const data = await hmy_getDelegationsByDelegator(id)
+        const data = await fch_getDelegationsByDelegator(id)
         setDelegations(data)
       } catch (e) {
         console.error('Cannot get staking info', (e as Error).message)

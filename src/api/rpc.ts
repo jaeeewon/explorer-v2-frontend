@@ -54,7 +54,7 @@ export const getBalance = (nodeUrl: string, params: [string, "latest"]) => {
 };
 
 
-export const hmyv2_getTransactionReceipt = (
+export const fchv2_getTransactionReceipt = (
   params: [string],
   shardNumber: number
 ) => {
@@ -65,7 +65,7 @@ export const hmyv2_getTransactionReceipt = (
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         jsonrpc: "2.0",
-        method: "hmyv2_getTransactionReceipt",
+        method: "fchv2_getTransactionReceipt",
         id: 1,
         params,
       }),
@@ -109,13 +109,13 @@ export const eth_traceTransaction = (hash: string) => {
   });
 }
 
-export const hmyv2_getTransactionsHistory = (params: IGetTxsHistoryParams[]) => {
+export const fchv2_getTransactionsHistory = (params: IGetTxsHistoryParams[]) => {
   return rpcAdapter<TRPCResponse<{ transactions: RPCTransactionHarmony[] }>>(API_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       jsonrpc: "2.0",
-      method: "hmyv2_getTransactionsHistory",
+      method: "fchv2_getTransactionsHistory",
       id: 1,
       params: [{ ...defaultGetHistoryParams, ...params[0] }],
     }),
@@ -127,13 +127,13 @@ export const hmyv2_getTransactionsHistory = (params: IGetTxsHistoryParams[]) => 
   });
 };
 
-export const hmyv2_getTransactionsCount = (address: string, txType: RequestTxType = RequestTxType.ALL) => {
+export const fchv2_getTransactionsCount = (address: string, txType: RequestTxType = RequestTxType.ALL) => {
   return rpcAdapter<TRPCResponse<number>>(API_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       jsonrpc: "2.0",
-      method: "hmyv2_getTransactionsCount",
+      method: "fchv2_getTransactionsCount",
       id: 1,
       params: [address, txType],
     }),
@@ -145,13 +145,13 @@ export const hmyv2_getTransactionsCount = (address: string, txType: RequestTxTyp
   });
 };
 
-export const hmyv2_getNodeMetadata = (shard: string) => {
+export const fchv2_getNodeMetadata = (shard: string) => {
   return rpcAdapter<TRPCResponse<any>>(getApiUrl(shard), {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       jsonrpc: "2.0",
-      method: "hmyv2_getNodeMetadata",
+      method: "fchv2_getNodeMetadata",
       id: 1,
       params: [],
     }),
@@ -163,13 +163,13 @@ export const hmyv2_getNodeMetadata = (shard: string) => {
   });
 };
 
-export const hmyv2_getStakingTransactionsHistory = (params: IGetTxsHistoryParams[]) => {
+export const fchv2_getStakingTransactionsHistory = (params: IGetTxsHistoryParams[]) => {
   return rpcAdapter<TRPCResponse<{ staking_transactions: RPCTransactionHarmony[] }>>(API_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       jsonrpc: "2.0",
-      method: "hmyv2_getStakingTransactionsHistory",
+      method: "fchv2_getStakingTransactionsHistory",
       id: 1,
       params: [{ ...defaultGetHistoryParams, ...params[0] }],
     }),
@@ -181,13 +181,13 @@ export const hmyv2_getStakingTransactionsHistory = (params: IGetTxsHistoryParams
   });
 };
 
-export const hmyv2_getStakingTransactionsCount = (address: string, txType: RequestTxType = RequestTxType.ALL) => {
+export const fchv2_getStakingTransactionsCount = (address: string, txType: RequestTxType = RequestTxType.ALL) => {
   return rpcAdapter<TRPCResponse<number>>(API_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       jsonrpc: "2.0",
-      method: "hmyv2_getStakingTransactionsCount",
+      method: "fchv2_getStakingTransactionsCount",
       id: 1,
       params: [address, txType],
     }),
@@ -222,13 +222,13 @@ const mapStakingDelegation = (delegation: StakingDelegationResponse): StakingDel
   }
 }
 
-export const hmy_getDelegationsByDelegator = (address: string): Promise<StakingDelegation[]> => {
+export const fch_getDelegationsByDelegator = (address: string): Promise<StakingDelegation[]> => {
   return rpcBigIntAdapter<TRPCResponse<StakingDelegationResponse[]>>(API_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       jsonrpc: "2.0",
-      method: "hmy_getDelegationsByDelegator",
+      method: "fch_getDelegationsByDelegator",
       id: 1,
       params: [address],
     }),
@@ -273,7 +273,7 @@ export const getAllApprovalsForTokens = async (address: string,
   // if null, return all approvals
   const contractHarmonyAddr = contractAddress && contractAddress.length > 0 ? new HarmonyAddress(contractAddress) : null;
 
-  let dataObj: RPCTransactionHarmony[] = await hmyv2_getTransactionsHistory(params);
+  let dataObj: RPCTransactionHarmony[] = await fchv2_getTransactionsHistory(params);
 
   for (let tx of dataObj) {
     if (matchesApprovalMethod(tx) && (tx.to === contractAddress || tx.to === contractHarmonyAddr?.bech32 || !contractHarmonyAddr)) {

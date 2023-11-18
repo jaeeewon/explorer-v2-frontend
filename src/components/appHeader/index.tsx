@@ -63,7 +63,7 @@ export function AppHeader(props: { style: CSSProperties }) {
               <img src={require("../../assets/Logo.svg").default} />
               {!isTabletOrMobile &&
                   <ProjectName direction={"column"} align={"start"}>
-                    Harmony
+                    FeeChain
                     <Text size={"small"}>Block Explorer</Text>
                   </ProjectName>
               }

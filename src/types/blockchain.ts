@@ -6,9 +6,9 @@ export type RPCETHMethod =
   | "trace_block";
 
 export type RPCHarmonyMethod =
-  | "hmy_getBlockByNumber"
-  | "hmy_getTransactionByHash"
-  | "hmy_getBlocks"
+  | "fch_getBlockByNumber"
+  | "fch_getTransactionByHash"
+  | "fch_getBlocks"
   | "debug_traceTransaction";
 
 export type ShardID = 0 | 1 | 2 | 3;

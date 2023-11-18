@@ -8,7 +8,7 @@ import { getStakingTransactionByField } from "src/api/client";
 import { TransactionDetails } from "src/components/transaction/TransactionDetails";
 import { StakingTransactionType } from "src/types";
 import { TransactionSubType } from "src/components/transaction/helpers";
-import { hmyv2_getTransactionReceipt } from "src/api/rpc";
+import { fchv2_getTransactionReceipt } from "src/api/rpc";
 import { config } from "../../config";
 
 export const StakingTransactionPage = () => {
@@ -41,7 +41,7 @@ export const StakingTransactionPage = () => {
         }
 
         try {
-          const txnReceipt = await hmyv2_getTransactionReceipt([id], shardNumber)
+          const txnReceipt = await fchv2_getTransactionReceipt([id], shardNumber)
           if (txnReceipt && txnReceipt.result) {
             if (tx.type === "CollectRewards" && tx.amount === null) {
               tx.amount = txnReceipt.result.logs[0].data

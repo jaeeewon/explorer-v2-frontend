@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { singletonHook } from "react-singleton-hook";
 
-const initCurrency: currencyType = "ONE";
+const initCurrency: currencyType = "FEE";
 
 let globalSetMode = () => {
   throw new Error("you must useDarkMode before setting its state");
@@ -23,6 +23,6 @@ export const setCurrency = (mode: currencyType) =>  {
   window.localStorage.setItem('currency', mode);
 };
 
-export type currencyType = "ONE" | "ETH";
+export type currencyType = "FEE" | "ETH";
 
 export const getStoredValue = () => window.localStorage.getItem('currency') as currencyType || initCurrency

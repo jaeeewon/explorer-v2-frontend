@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react'
 import { StatPage } from './StatPage';
-import { hmyv2_getNodeMetadata } from 'src/api/rpc';
+import { fchv2_getNodeMetadata } from 'src/api/rpc';
 import { config } from 'src/config';
 
 const CONSENSUS = "consensus"
@@ -19,7 +19,7 @@ export const ViewChangeStats = () => {
             try {
                 setIsLoading(true) 
                 for (let i in availableShards) {
-                    const nodeMetadata = await hmyv2_getNodeMetadata(i)
+                    const nodeMetadata = await fchv2_getNodeMetadata(i)
                     const blockHeight = nodeMetadata[CONSENSUS][BLOCK_NUM]
                     const viewId = nodeMetadata[CONSENSUS][VIEW_ID]
                     const viewChange = viewId - blockHeight

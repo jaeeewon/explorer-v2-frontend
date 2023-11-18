@@ -43,9 +43,9 @@ export function AppFooter(props: { style: CSSProperties }) {
         {/*</Box>*/}
         <Box direction="row" justify="center" align="center" gap="xsmall">
           <Text color="minorText" size="xsmall" margin={{ top: '3px' }}>©</Text>
-          <Text color="minorText" size="xsmall">Harmony {new Date().getFullYear()}</Text>
+          <Text color="minorText" size="xsmall">Mojaik {new Date().getFullYear()}</Text>
           <Text color="minorText" size="small" margin={{ bottom: '6px' }}>.</Text>
-          <Text color="minorText" size="xsmall">hello@harmony.one</Text>
+          <Text color="minorText" size="xsmall">hello@mojaik.com</Text>
         </Box>
       </Box>
     </Box>

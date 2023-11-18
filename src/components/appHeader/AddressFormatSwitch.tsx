@@ -44,7 +44,7 @@ export const AddressFormatSwitch = () => {
     setFormat(currency)
   }, [currency])
 
-  const options: currencyType[] = ['ONE', 'ETH']
+  const options: currencyType[] = ['FEE', 'ETH']
 
   return <SwitchContainer direction="row">
     <OptionBackground selectedIndex={options.indexOf(addressFormat)} />

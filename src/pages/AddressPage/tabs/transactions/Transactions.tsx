@@ -111,7 +111,7 @@ export function Transactions(props: {
   // @ts-ignore
   let { id } = useParams();
   id = `${id}`.toLowerCase();
-  id = id.slice(0, 3) === "one" ? getAddress(id).basicHex : id;
+  id = id.slice(0, 3) === "fee" ? getAddress(id).basicHex : id;
   const prevId = usePrevious(id);
 
   const { limit = 10, offset = 0 } = filter[props.type];

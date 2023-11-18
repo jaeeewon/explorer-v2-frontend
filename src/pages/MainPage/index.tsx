@@ -43,9 +43,9 @@ export function MainPage() {
 
   const [selectedShard, setSelectedShard] = useState<string>("0");
   const [blocks, setBlocks] = useState<Block[]>([]);
-  const [blockLatency, setBlockLatency] = useState<number>(2.01);
+  const [blockLatency, setBlockLatency] = useState<number>(3.01);
 
-  const [blockLatencyMap, setBlockLatencyMap] = useState<number[]>([2.01]);
+  const [blockLatencyMap, setBlockLatencyMap] = useState<number[]>([3.01]);
   const { availableShards } = config
 
   useEffect(() => {

@@ -112,7 +112,7 @@ function getColumns(props: any) {
       resizeable: false,
       header: (
         <Text color="minorText" size="small">
-          ONEValue
+          FEEValue
         </Text>
       ),
       render: (data: RPCTransactionHarmony) => (

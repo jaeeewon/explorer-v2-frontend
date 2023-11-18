@@ -113,7 +113,7 @@ export function TokensInfo(props: { value: Token[] }) {
           itemStyles={{ padding: "4px", borderBottom: '1px solid', borderColor: '#f3f3f3' }}
           searchable={(item, searchText) => {
             const outPutAddress =
-              currency === "ONE"
+              currency === "FEE"
                 ? getAddress(item.tokenAddress).bech32
                 : item.tokenAddress;
 

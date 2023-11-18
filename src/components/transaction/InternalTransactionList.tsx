@@ -139,7 +139,7 @@ function getColumns(props?: any) {
       property: "value",
       header: (
         <Text color="minorText" size="small" style={{ fontWeight: 300 }}>
-          ONEValue
+          FEEValue
         </Text>
       ),
       render: (data: InternalTransaction) => (
