@@ -1,7 +1,7 @@
 import React, { CSSProperties } from "react";
 import { Box, Text } from "grommet";
 import { Link, useHistory } from "react-router-dom";
-import {toChecksumAddress} from 'web3-utils';
+import { toChecksumAddress } from "web3-utils";
 import { useERC20Pool } from "src/hooks/ERC20_Pool";
 import { getAddress } from "src/utils";
 import { useCurrency } from "src/hooks/ONE-ETH-SwitcherHook";
@@ -12,6 +12,7 @@ import { CopyBtn } from "./CopyBtn";
 import { toaster } from "src/App";
 import styled from "styled-components";
 import { StatusGood } from "grommet-icons";
+import { WalletInfo } from "./WalletInfo";
 
 const Icon = styled(StatusGood)`
   margin-right: 5px;
@@ -31,13 +32,15 @@ interface IAddress {
 }
 
 const AddressText = styled(Text)<{ isShortEllipsis?: boolean }>`
-  ${({ isShortEllipsis }) => isShortEllipsis && `
+  ${({ isShortEllipsis }) =>
+    isShortEllipsis &&
+    `
     display: block;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   `}
-`
+`;
 
 export const Address = (props: IAddress) => {
   const {
@@ -49,7 +52,7 @@ export const Address = (props: IAddress) => {
     color = "brand",
     displayHash,
     hideCopyBtn = false,
-    showLink = true
+    showLink = true,
   } = props;
   const history = useHistory();
   const ERC20Map = useERC20Pool();
@@ -85,65 +88,74 @@ export const Address = (props: IAddress) => {
 
   let outPutAddress: string;
   try {
-    outPutAddress = currency === "FEE" ? getAddress(address).bech32 : toChecksumAddress(address);
+    outPutAddress =
+      currency === "FEE"
+        ? getAddress(address).bech32
+        : toChecksumAddress(address);
   } catch {
     outPutAddress = address;
   }
 
-  const addressContent = <AddressText
-    size="small"
-    color={color}
-    style={{
-      marginLeft: hideCopyBtn ? "0px" : "7px",
-      cursor: showLink ? 'pointer' : 'default',
-      ...style,
-    }}
-    isShortEllipsis={isShortEllipsis}
-    onClick={
-      address === EMPTY_ADDRESS
-        ? undefined
-        : props.noHistoryPush
+  const addressContent = (
+    <AddressText
+      size="small"
+      color={color}
+      style={{
+        marginLeft: hideCopyBtn ? "0px" : "7px",
+        cursor: showLink ? "pointer" : "default",
+        ...style,
+      }}
+      isShortEllipsis={isShortEllipsis}
+      onClick={
+        address === EMPTY_ADDRESS
+          ? undefined
+          : props.noHistoryPush
           ? undefined
           : (e) => {
-            e.preventDefault();
-            history.push(`/${type}/${address}`);
-          }
-    }
-  >
-    {parsedName ||
-      (isShort
-        ? `${outPutAddress.substr(0, 4)}...${outPutAddress.substr(-4)}`
-        : outPutAddress)}
-  </AddressText>
+              e.preventDefault();
+              history.push(`/${type}/${address}`);
+            }
+      }
+    >
+      {parsedName ||
+        (isShort
+          ? `${outPutAddress.substr(0, 4)}...${outPutAddress.substr(-4)}`
+          : outPutAddress)}
+    </AddressText>
+  );
 
   return (
     <div style={{ display: "inline-block" }}>
-      <Box direction={"row"} align={"center"} justify={"start"}>
-        {hideCopyBtn ? null : (
-          <CopyBtn
-            value={outPutAddress}
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              toaster.show({
-                message: () => (
-                  <Box direction={"row"} align={"center"} pad={"small"}>
-                    <Icon size={"small"} color={"headerText"} />
-                    <Text size={"small"}>Copied to clipboard</Text>
-                  </Box>
-                ),
-              });
-            }}
-          />
-        )}
-        {showLink &&
-          <Link to={address === EMPTY_ADDRESS ? "" : `/${type}/${address}`}>
-            {addressContent}
-          </Link>
-        }
-        {!showLink &&
-          addressContent
-        }
+      <Box direction="column" gap="xsmall" justify="end">
+        <Box direction={"row"} align={"center"} justify={"start"}>
+          {hideCopyBtn ? null : (
+            <CopyBtn
+              value={outPutAddress}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                toaster.show({
+                  message: () => (
+                    <Box direction={"row"} align={"center"} pad={"small"}>
+                      <Icon size={"small"} color={"headerText"} />
+                      <Text size={"small"}>Copied to clipboard</Text>
+                    </Box>
+                  ),
+                });
+              }}
+            />
+          )}
+
+          {showLink ? (
+            <Link to={address === EMPTY_ADDRESS ? "" : `/${type}/${address}`}>
+              {addressContent}
+            </Link>
+          ) : (
+            addressContent
+          )}
+        </Box>
+
+        {type === "address" && !displayHash && <WalletInfo wallet={address} />}
       </Box>
     </div>
   );

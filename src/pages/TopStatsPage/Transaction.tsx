@@ -18,6 +18,10 @@ const defaultCache = {
     [MetricsTopPeriod.d1]: {...defaultMetricsItem},
     [MetricsTopPeriod.d3]: {...defaultMetricsItem},
     [MetricsTopPeriod.d7]: {...defaultMetricsItem},
+    [MetricsTopPeriod.m1]: {...defaultMetricsItem},
+    [MetricsTopPeriod.m3]: {...defaultMetricsItem},
+    [MetricsTopPeriod.m6]: {...defaultMetricsItem},
+    [MetricsTopPeriod.y1]: {...defaultMetricsItem},
 }
 
 export const TransactionTopStats = () => {

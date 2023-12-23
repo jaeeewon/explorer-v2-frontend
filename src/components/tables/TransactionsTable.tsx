@@ -13,6 +13,8 @@ import {
   ONEValue,
 } from "src/components/ui";
 import { TableComponent } from "./TableComponents";
+import { WalletInfo } from "../ui/WalletInfo";
+import { fromBech32 } from "src/utils/getAddress/bech32";
 
 function getColumns(props: any) {
   const { history } = props;
@@ -56,7 +58,7 @@ function getColumns(props: any) {
           }}
           color="brand"
         >
-          <Address address={data.hash} isShort />
+          <Address address={data.hash} isShort type="tx" />
         </Text>
       ),
     },
@@ -125,7 +127,7 @@ function getColumns(props: any) {
       property: "timestamp",
       resizeable: false,
       header: (
-        <Text color="minorText" size="small" style={{ width: '180px' }}>
+        <Text color="minorText" size="small" style={{ width: "180px" }}>
           Timestamp
         </Text>
       ),
@@ -135,6 +137,20 @@ function getColumns(props: any) {
         </Box>
       ),
     },
+    // {
+    //   property: "info",
+    //   resizeable: false,
+    //   header: (
+    //     <Text color="minorText" size="small">
+    //       from wallet info
+    //     </Text>
+    //   ),
+    //   render: (data: RPCTransactionHarmony) => (
+    //     <Box direction="row" gap="xsmall" justify="end">
+    //       <WalletInfo wallet={data.from} />
+    //     </Box>
+    //   ),
+    // },
   ];
 }
 
@@ -155,9 +171,9 @@ interface TransactionTableProps {
   noScrollTop?: boolean;
   step?: number;
   primaryKey?: string;
-  showPages?: boolean
-  textType?: string
-  paginationOptions?: string[]
+  showPages?: boolean;
+  textType?: string;
+  paginationOptions?: string[];
 }
 
 export function TransactionsTable(props: TransactionTableProps) {
@@ -178,7 +194,7 @@ export function TransactionsTable(props: TransactionTableProps) {
     noScrollTop,
     minWidth = "1310px",
     showPages = false,
-    textType = 'transaction',
+    textType = "transaction",
     paginationOptions,
   } = props;
 
@@ -223,7 +239,7 @@ export function TransactionsTable(props: TransactionTableProps) {
           overflow: "auto",
           opacity: _IsLoading ? "0.4" : "1",
           transition: "0.1s all",
-          minHeight: _IsLoading || data.length > 0 ? "600px" : 'unset',
+          minHeight: _IsLoading || data.length > 0 ? "600px" : "unset",
         }}
       >
         {_IsLoading ? (
@@ -235,21 +251,21 @@ export function TransactionsTable(props: TransactionTableProps) {
             alwaysOpenedRowDetails={!!props.rowDetails}
             tableProps={{
               className: "g-table-transactions",
-              style: { width: "100%", minWidth, tableLayout: 'auto' },
+              style: { width: "100%", minWidth, tableLayout: "auto" },
               columns: columns ? columns : getColumns({ history }),
               data: data,
               step,
               primaryKey: props.primaryKey ? props.primaryKey : undefined,
               background: {
                 header: {
-                  color: 'tableRowHover'
-                }
+                  color: "tableRowHover",
+                },
               },
               border: {
                 header: {
                   color: "border",
-                  side: 'top',
-                  size: '1px'
+                  side: "top",
+                  size: "1px",
                 },
                 body: {
                   color: "border",
@@ -268,11 +284,11 @@ export function TransactionsTable(props: TransactionTableProps) {
           />
         )}
       </Box>
-      {!_IsLoading && data.length === 0 &&
-          <Box style={{ height: "120px" }} justify="center" align="center">
-            <Text size="small">{emptyText}</Text>
-          </Box>
-      }
+      {!_IsLoading && data.length === 0 && (
+        <Box style={{ height: "120px" }} justify="center" align="center">
+          <Text size="small">{emptyText}</Text>
+        </Box>
+      )}
       {!hidePagination && (
         <Box
           direction="row"
@@ -280,7 +296,11 @@ export function TransactionsTable(props: TransactionTableProps) {
           align="center"
           margin={{ top: "medium" }}
         >
-          <PaginationRecordsPerPage filter={filter} options={paginationOptions} onChange={setFilter} />
+          <PaginationRecordsPerPage
+            filter={filter}
+            options={paginationOptions}
+            onChange={setFilter}
+          />
           <PaginationNavigator
             onChange={setFilter}
             isLoading={isLoading}
