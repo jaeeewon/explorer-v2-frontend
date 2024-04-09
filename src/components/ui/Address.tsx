@@ -155,7 +155,7 @@ export const Address = (props: IAddress) => {
           )}
         </Box>
 
-        {type === "address" && !displayHash && <WalletInfo wallet={address} />}
+        {type === "address" && <WalletInfo wallet={address} />}
       </Box>
     </div>
   );

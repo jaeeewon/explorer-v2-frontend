@@ -84,7 +84,7 @@ function AppWithHistory() {
           </BaseContainer>
         </Box>
         <AppFooter style={{ flex: "0 0 auto" }} />
-        <ONE_USDT_Rate />
+        {/* <ONE_USDT_Rate /> */}
       </Box>
     </Grommet>
   );

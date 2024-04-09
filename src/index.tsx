@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
 import reportWebVitals from './reportWebVitals' 
-console.log(process.env)
+// console.log(process.env)
 
 ReactDOM.render(
   <React.StrictMode>

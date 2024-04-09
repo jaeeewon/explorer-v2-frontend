@@ -69,8 +69,8 @@ export const Metrics = (params: {
           }}
           gap={isLessMobileM ? "small" : "0"}
         >
-          <ONEPrice />
-          {!isLessMobileM && <Line horizontal />}
+          {/* <ONEPrice />
+          {!isLessMobileM && <Line horizontal />} */}
           <TransactionsCount />
         </Box>
         <Box
