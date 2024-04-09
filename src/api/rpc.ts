@@ -308,6 +308,6 @@ const getApiUrl = (shard: string) => {
     case "3":
       return process.env.REACT_APP_RPC_URL_SHARD3 || 'https://a.api.s3.t.hmny.io/'
     default:
-      return 'https://api.s0.t.hmny.io/' || process.env.REACT_APP_RPC_URL_SHARD0 
+      return process.env.REACT_APP_RPC_URL_SHARD0 || 'https://api.s0.t.hmny.io/'
   }
 }
