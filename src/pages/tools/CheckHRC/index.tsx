@@ -189,7 +189,7 @@ export function CheckHRC() {
 
   const prepareAddress = (address: string) => {
     let a = address.toLowerCase()
-    if(address.startsWith('one1')) { // convert one1 to 0x before send request to backend
+    if(address.startsWith('fee1')) { // convert one1 to 0x before send request to backend
       try {
         a = getAddress(address).basicHex
       } catch (e) {}

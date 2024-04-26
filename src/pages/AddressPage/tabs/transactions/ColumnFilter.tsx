@@ -29,7 +29,7 @@ export const ColumnFilter = (props: ColumnFilterProps) => {
 
     const validateValue = (v: string) => {
         if(v.length > 0) {
-            if(!v.startsWith('0x') && !v.startsWith('one1')) {
+            if(!v.startsWith('0x') && !v.startsWith('fee1')) {
                 return 'Address should start with 0x or one1'
             }
             if(v.length != 42) {

@@ -138,7 +138,7 @@ export const SearchInput = () => {
         return;
       }
 
-      if (v.length === 42 && v.slice(0, 4) === "one1") {
+      if (v.length === 42 && v.slice(0, 4) === "fee1") {
         // address
         const ethAddress = getAddress(v).basicHex;
 

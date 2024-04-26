@@ -33,7 +33,7 @@ const prepareFilter = (type: TRelatedTransaction, filter: Filter) => {
       if(item.property === 'to') {
         const value = item.value as string
         let address = value
-        if(value.startsWith('one1')) { // convert one1 to 0x before send request to backend
+        if(value.startsWith('fee1')) { // convert one1 to 0x before send request to backend
           try {
             address = getAddress(value as string).basicHex
           } catch (e) {}
