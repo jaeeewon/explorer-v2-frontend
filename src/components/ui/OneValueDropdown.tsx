@@ -97,7 +97,7 @@ export const ONEValueDropdown = (props: ONEValueProps) => {
                                 prev += cur.one;
                                 return prev;
                             }, 0)}{" "}
-                            ONE
+                            FEE
                         </b>
                     </Text>
                     <Text size={"small"} style={{paddingLeft: "4px"}}>
@@ -122,7 +122,7 @@ export const ONEValueDropdown = (props: ONEValueProps) => {
                         Shard {item.index}:{" "}
                     </Text>
                     <Text size={"small"} style={{paddingLeft: "4px"}}>
-                        <b>{item.one} ONE </b>
+                        <b>{item.one} FEE </b>
                     </Text>
                     {item.usd ? (
                         <Text size={"small"} style={{paddingLeft: "4px"}}>

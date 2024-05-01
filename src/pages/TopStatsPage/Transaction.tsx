@@ -118,14 +118,14 @@ export const TransactionTopStats = () => {
         >
             <TopTable
                 items={oneSenders}
-                title={'Top ONE Senders'}
-                columns={['Rank', 'Address', 'Total ONE', 'Percentage']}
+                title={'Top FEE Senders'}
+                columns={['Rank', 'Address', 'Total FEE', 'Percentage']}
                 isLoading={isLoading}
             />
             <TopTable
                 items={oneReceivers}
-                title={'Top ONE Receivers'}
-                columns={['Rank', 'Address', 'Total ONE', 'Percentage']}
+                title={'Top FEE Receivers'}
+                columns={['Rank', 'Address', 'Total FEE', 'Percentage']}
                 isLoading={isLoading}
             />
             <TopTable

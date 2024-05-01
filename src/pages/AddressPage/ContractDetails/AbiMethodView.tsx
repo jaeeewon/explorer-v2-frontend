@@ -159,11 +159,11 @@ export const AbiMethodsView = (props: {
         {abiMethod.stateMutability === 'payable' ? (
           <Field gap='5px'>
             <Text size='small'>
-              payableAmount <span>ONE</span>
+              payableAmount <span>FEE</span>
             </Text>
             <SmallTextInput
               value={amount}
-              placeholder={`payableAmount (ONE)`}
+              placeholder={`payableAmount (FEE)`}
               onChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
                 setAmount(evt.currentTarget.value)
               }

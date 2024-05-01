@@ -18,7 +18,7 @@ export default function ONEPrice() {
             </Box>
             <Box align="start">
                 <Text size="small" color="minorText">
-                    {"ONE PRICE"}
+                    {"FEE PRICE"}
                 </Text>
                 <Box direction="row" gap="xsmall" align="baseline">
                     <Text size="small" weight="bold">

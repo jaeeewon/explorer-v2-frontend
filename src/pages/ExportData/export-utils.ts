@@ -32,10 +32,10 @@ const mapRelatedTxToExport = (ownerAddress: string, tx: RelatedTransaction, oneP
     DateTime: txDate.format('YYYY-MM-DD HH:MM:ss'),
     From: tx.from,
     To: tx.to,
-    ['Value_IN(ONE)']: convertValue(isSender ? '0': tx.value),
-    ['Value_OUT(ONE)']: convertValue(isSender ? tx.value : '0'),
-    [`CurrentValue @ $${onePrice}/ONE`]: convertValue(onePrice * +tx.value),
-    ['TxnFee(ONE)']: calculateFee(tx.gas, tx.gasPrice),
+    ['Value_IN(FEE)']: convertValue(isSender ? '0': tx.value),
+    ['Value_OUT(FEE)']: convertValue(isSender ? tx.value : '0'),
+    [`CurrentValue @ $${onePrice}/FEE`]: convertValue(onePrice * +tx.value),
+    ['TxnFee(FEE)']: calculateFee(tx.gas, tx.gasPrice),
     ['TxnFee(USD)']: calculateFeePriceUSD(tx.gas, tx.gasPrice, onePrice),
     Method: tx.input.slice(0, 10)
   }
@@ -72,9 +72,9 @@ const mapInternalTxToExport = (ownerAddress: string, tx: InternalTransaction, on
     DateTime: txDate.format('YYYY-MM-DD HH:MM:ss'),
     From: tx.from,
     To: tx.to,
-    ['Value_IN(ONE)']: convertValue(isSender ? '0': tx.value),
-    ['Value_OUT(ONE)']: convertValue(isSender ? tx.value : '0'),
-    [`CurrentValue @ $${onePrice}/ONE`]: convertValue(onePrice * +tx.value),
+    ['Value_IN(FEE)']: convertValue(isSender ? '0': tx.value),
+    ['Value_OUT(FEE)']: convertValue(isSender ? tx.value : '0'),
+    [`CurrentValue @ $${onePrice}/FEE`]: convertValue(onePrice * +tx.value),
     Method: tx.input.slice(0, 10),
     Type: tx.type
   }

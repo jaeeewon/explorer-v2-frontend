@@ -25,9 +25,11 @@ export function WalletInfo(props: IWallet) {
       size="small"
       style={{
         minWidth: "125px",
+        maxWidth: "1500px",
+        overflow: "scroll",
         display: "inline-block",
         whiteSpace: "nowrap",
-        textAlign:'left'
+        textAlign: "left",
       }}
       color="minorText"
       title={walletInfo}

@@ -212,7 +212,7 @@ export function CheckHRC() {
               <Box direction="row">
                 <Box width={'550px'}>
                   <TextInput
-                    placeholder={"ONE contract address"}
+                    placeholder={"FEE contract address"}
                     onChange={(evt: React.ChangeEvent<HTMLInputElement>) => {
                       setContractAddress(evt.currentTarget.value)
                     }}

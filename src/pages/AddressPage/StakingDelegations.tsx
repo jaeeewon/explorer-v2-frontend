@@ -62,11 +62,11 @@ function StakingDelegations(props: { delegations: StakingDelegation[] }) {
         </Box>
         <Box direction={'row'} gap={'8px'}>
           <Text size={'small'}>Stake</Text>
-          {+item.amount > 0 ? <ONEValue value={item.amount} /> : '0 ONE'}
+          {+item.amount > 0 ? <ONEValue value={item.amount} /> : '0 FEE'}
         </Box>
         <Box direction={'row'} gap={'8px'}>
           <Text size={'small'}>Reward</Text>
-          {+item.reward > 0 ? <ONEValue value={item.reward} />: '0 ONE'}
+          {+item.reward > 0 ? <ONEValue value={item.reward} />: '0 FEE'}
         </Box>
       </Box>
     },
@@ -83,7 +83,7 @@ function StakingDelegations(props: { delegations: StakingDelegation[] }) {
   return <Box style={{ width: "550px" }}>
     {(+totalAmount > 0 || +totalRewards > 0)
       ? <Dropdown<any> {...dropdownProps} />
-      : <Text size={'small'}>0 ONE</Text>
+      : <Text size={'small'}>0 FEE</Text>
     }
   </Box>
 }

@@ -34,14 +34,14 @@ export const AverageFee = () => {
         isLoading,
         loadingError,
         chart: {
-            yAxisLabel: 'Average Transaction Fee (ONE)',
-            tooltipLabel: 'Average tx fee (ONE)'
+            yAxisLabel: 'Average Transaction Fee (FEE)',
+            tooltipLabel: 'Average tx fee (FEE)'
         },
         renderMaxValue: (value: string, date: string) => {
-            return `Highest average transaction fee of ${value} ONE on ${date}`
+            return `Highest average transaction fee of ${value} FEE on ${date}`
         },
         renderMinValue: (value: string, date: string) => {
-            return `Lowest average transaction fee of ${value} ONE on ${date}`
+            return `Lowest average transaction fee of ${value} FEE on ${date}`
         }
     }
 

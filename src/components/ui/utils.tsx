@@ -64,7 +64,7 @@ export function CalculateFee(transaction: any) {
 
   return (
     <>
-      {normalizedFee} ONE
+      {normalizedFee} FEE
       {!USDValue || USDValue === "0.00" || USDValue == "0" ? null : (
         <>($ {USDValue})</>
       )}
@@ -97,7 +97,7 @@ export function CalculateTransactionFee(transaction: RPCTransactionHarmony | RPC
 
   return (
     <>
-      {fee} ONE
+      {fee} FEE
       {!USDValue || USDValue === "0.00" || USDValue == "0" ? null : (
         <>($ {USDValue})</>
       )}

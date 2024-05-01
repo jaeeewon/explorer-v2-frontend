@@ -178,7 +178,7 @@ class VerifyContractBase extends React.Component<
               <Field margin={"small"} width={isLessTablet ? "100%" : "42%"}>
                 <Text>Contract Address</Text>
                 <TextInput
-                  placeholder={"ONE contract address"}
+                  placeholder={"FEE contract address"}
                   onChange={(evt: React.ChangeEvent<HTMLInputElement>) => {
                     this.setState({
                       ...this.state,
@@ -193,7 +193,7 @@ class VerifyContractBase extends React.Component<
               <Field margin={"small"} width={isLessTablet ? "100%" : "42%"}>
                 <Text>Contract Name</Text>
                 <TextInput
-                  placeholder={"ONE name"}
+                  placeholder={"FEE name"}
                   onChange={(evt: React.ChangeEvent<HTMLInputElement>) => {
                     this.setState({
                       ...this.state,

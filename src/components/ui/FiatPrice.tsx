@@ -19,7 +19,7 @@ export const FiatPrice = () => {
 
   return (
     <>
-      <Text size="xsmall">ONE:&nbsp;${price}&nbsp;</Text>
+      <Text size="xsmall">FEE:&nbsp;${price}&nbsp;</Text>
       <Text size="xsmall" color={isPositive ? "#69FABD" : "status-error"}>
         ({isPositive && "+"}
         {change}%)
